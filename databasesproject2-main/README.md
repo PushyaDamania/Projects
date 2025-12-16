@@ -1,3 +1,22 @@
+##Project Overview
+
+This project is a full-stack microblogging platform built using Java Spring Boot with a MySQL backend. The application allows users to create posts, interact with other users through likes, bookmarks, comments, and follows, and discover content via hashtag-based search.
+
+The system follows a layered architecture consisting of:
+
+Presentation layer (Mustache templates)
+
+Controller layer (Spring MVC)
+
+Service layer (business logic + JDBC)
+
+Persistence layer (MySQL accessed via JDBC)
+
+In addition to the required features, the project implements multiple non-trivial extensions, including a notification system, avatar selection and upload, and post deletion with authorization checks.
+
+
+##Team Members & Contributions
+
 Pushya Damania
 -> Created ER models and recorded video demonstration
 
@@ -60,3 +79,101 @@ Debugging and code integration.
 - Controller: src/main/java/uga/menik/csx370/controllers/PeopleController.java
 - Service: src/main/java/uga/menik/csx370/services/PeopleService.java
 - SQL: SELECT with LEFT JOIN on follows; INSERT/DELETE for follow/unfollow; uses user.lastActiveDate for display
+
+
+##Third-Party Libraries
+
+No external libraries beyond those provided in the starter code Maven dependencies were used, in compliance with project restrictions. Only:
+
+* Java standard libraries
+
+* Spring Boot starter dependencies
+
+* JDBC / SQL APIs
+
+##Database & JDBC Details
+
+Database schema designed using ER modeling
+
+Tables include:
+
+* user, post, comment, follow
+
+* hashtag, hashtag_post
+
+* like_post, bookmark
+
+* notification
+
+All tables are created and populated in:
+
+* database_setup.sql
+
+All DML queries used by the application are documented in:
+
+* dml.sql
+
+Each query includes:
+
+* Purpose
+
+* Related application URL path
+
+* Database access is handled using plain JDBC with prepared statements inside the service layer.
+
+##How to Run the Project (Local)
+
+1. Start MySQL Docker Container
+
+Ensure MySQL is running and mapped correctly:
+
+docker container inspect mysql-server --format '{{.NetworkSettings.Ports}}'
+
+
+Expected mapping:
+
+3306 -> 33306
+
+2. Initialize Database (First Run Only)
+
+From MySQL prompt:
+
+SOURCE database_setup.sql;
+
+3. Run the Application
+
+Navigate to the directory containing pom.xml.
+
+macOS / Linux
+
+mvn spring-boot:run -Dspring-boot.run.jvmArguments='-Dserver.port=8081'
+
+
+Windows (Command Prompt)
+
+mvn spring-boot:run -D"spring-boot.run.arguments=--server.port=8081"
+
+
+Windows (PowerShell)
+
+mvn spring-boot:run --% -Dspring-boot.run.arguments="--server.port=8081"
+
+4. Access the App
+
+Open a browser and navigate to:
+
+http://localhost:8081/
+
+
+Create an account and log in to begin using the platform.
+
+
+##Additional Notes
+
+Empty posts are not allowed.
+
+Home page shows posts from followed users and the logged-in user.
+
+Last active date is derived from most recent post; users with no posts display Unknown.
+
+Time zone differences are acceptable as long as application behavior is consistent.
