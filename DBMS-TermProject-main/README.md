@@ -1,9 +1,9 @@
 # HCI Insights — DBMS Term Project
 
 **Team Members
+
 Pushya Damania
 -> Created and populated the database with realistic, large-scale data using automated SQL scripts. Authored documentation files: data.sql, ddl.sql, populate.sql, datasource.txt, security.txt, generate_data.inpyb.
-
 
 Olin Cordell
 -> Created Models, Controllers, Services and implemented UI/UX across the web service.
