@@ -1,4 +1,4 @@
-##Project Overview
+# Project Overview
 
 This project is a full-stack microblogging platform built using Java Spring Boot with a MySQL backend. The application allows users to create posts, interact with other users through likes, bookmarks, comments, and follows, and discover content via hashtag-based search.
 
@@ -15,7 +15,7 @@ Persistence layer (MySQL accessed via JDBC)
 In addition to the required features, the project implements multiple non-trivial extensions, including a notification system, avatar selection and upload, and post deletion with authorization checks.
 
 
-##Team Members & Contributions
+# Team Members & Contributions
 
 Pushya Damania
 -> Created ER models and recorded video demonstration
@@ -81,7 +81,7 @@ Debugging and code integration.
 - SQL: SELECT with LEFT JOIN on follows; INSERT/DELETE for follow/unfollow; uses user.lastActiveDate for display
 
 
-##Third-Party Libraries
+# Third-Party Libraries
 
 No external libraries beyond those provided in the starter code Maven dependencies were used, in compliance with project restrictions. Only:
 
@@ -91,7 +91,7 @@ No external libraries beyond those provided in the starter code Maven dependenci
 
 * JDBC / SQL APIs
 
-##Database & JDBC Details
+# Database & JDBC Details
 
 Database schema designed using ER modeling
 
@@ -121,7 +121,7 @@ Each query includes:
 
 * Database access is handled using plain JDBC with prepared statements inside the service layer.
 
-##How to Run the Project (Local)
+# How to Run the Project (Local)
 
 1. Start MySQL Docker Container
 
@@ -168,7 +168,7 @@ http://localhost:8081/
 Create an account and log in to begin using the platform.
 
 
-##Additional Notes
+# Additional Notes
 
 Empty posts are not allowed.
 
