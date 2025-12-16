@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+
+<body class="cream-bg">
+
+{{> fragments/navbar }}
+
+<div class="bg-circle navy top-left"></div>
+<div class="bg-circle maroon bottom-right"></div>
+<div class="bg-circle navy mid"></div>
+
+<div class="back-btn-floating">
+    <a class="btn btn-back" href="/studies">← Back to Studies</a>
+</div>
+
+<div class="container center-align" style="max-width: 600px; margin-top: 40px;">
+
+    <h1>Create a Study</h1>
+
+    {{#loggedInUser}}
+        <p>Logged in as <strong>{{username}}</strong></p>
+    {{/loggedInUser}}
+
+    {{#errorMessage}}
+        <p class="error-message">{{.}}</p>
+    {{/errorMessage}}
+
+    <form action="/studies/create" method="POST" class="form-card">
+
+        <label for="title">Study Title</label>
+        <input type="text" id="title" name="title" required placeholder="Enter study title">
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required
+                  placeholder="Brief explanation of the study"></textarea>
+
+        <label for="platform">Platform</label>
+        <input type="text" id="platform" name="platform" required>
+
+        <label for="status">Status</label>
+        <select id="status" name="status">
+            {{#statuses}}
+                <option value="{{.}}">{{.}}</option>
+            {{/statuses}}
+        </select>
+
+        <br><br>
+
+        <button type="submit" class="btn">Create Study</button>
+    </form>
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

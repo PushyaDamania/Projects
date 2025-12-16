@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle maroon bottom-right"></div>
+
+<div class="back-btn-floating">
+    <a class="btn btn-back" href="/studies/{{studyId}}/sessions/{{sessionId}}">← Back</a>
+</div>
+
+<div class="container">
+
+    <h2>Results for Session {{sessionId}}</h2>
+
+    <a class="btn" href="/studies/{{studyId}}/sessions/{{sessionId}}/results/create">+ Add Result</a>
+
+    {{#results}}
+        <div class="card">
+            <h4>Task {{taskId}}</h4>
+            <p><strong>Completed:</strong> {{isComplete}}</p>
+            <p><strong>Time:</strong> {{completionTime}}</p>
+            <p><strong>Errors:</strong> {{errors}}</p>
+            <p><strong>Notes:</strong> {{notes}}</p>
+
+            <div class="card-actions">
+                <div class="card-action-left">
+                    <a class="btn small"
+                       href="/studies/{{studyId}}/sessions/{{sessionId}}/results/{{resultId}}">View</a>
+                </div>
+                <div class="card-action-right">
+                    <a class="btn small btn-danger"
+                       href="/studies/{{studyId}}/sessions/{{sessionId}}/results/{{resultId}}/delete">Delete</a>
+                </div>
+            </div>
+        </div>
+    {{/results}}
+
+    {{^results}}
+        <p>No results recorded yet.</p>
+    {{/results}}
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

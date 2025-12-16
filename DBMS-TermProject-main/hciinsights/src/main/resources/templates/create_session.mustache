@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle navy top-left"></div>
+
+<div class="back-btn-floating">
+    <a class="btn btn-back" href="/studies/{{studyId}}/sessions">← Back</a>
+</div>
+
+<div class="container" style="max-width:600px;">
+
+    <h2>Create Session</h2>
+
+    <form action="/studies/{{studyId}}/sessions/create" method="POST">
+
+        <label>Participant</label>
+        <select name="participantId">
+            {{#participants}}
+                <option value="{{participantId}}">{{fname}} {{lname}}</option>
+            {{/participants}}
+        </select>
+
+        <label>Scheduled Date/Time</label>
+        <input type="datetime-local" name="scheduled" required>
+
+        <label>Notes</label>
+        <textarea name="notes"></textarea>
+
+        <label>Score (optional)</label>
+        <input type="number" name="score">
+
+        <button class="btn" type="submit">Create</button>
+
+    </form>
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

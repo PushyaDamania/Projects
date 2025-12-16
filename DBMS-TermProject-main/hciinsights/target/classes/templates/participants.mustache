@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle maroon bottom-right"></div>
+
+<div class="container">
+
+    <h2>Participants</h2>
+
+    <a class="btn" href="/participants/create">+ Add Participant</a>
+
+    {{#participants}}
+        <div class="card">
+            <h3>{{fullName}}</h3>
+            <p><strong>Age:</strong> {{age}}</p>
+            <p><strong>Occupation:</strong> {{occupation}}</p>
+            <p><strong>Experience:</strong> {{occupationExp}}</p>
+            <p><strong>Email:</strong> {{email}}</p>
+
+            <div class="card-actions">
+                <div class="card-action-left">
+                    <a class="btn small" href="/participants/{{participantId}}">View</a>
+                </div>
+                <div class="card-action-right">
+                    <a class="btn small btn-danger" href="/participants/delete/{{participantId}}">Delete</a>
+                </div>
+            </div>
+
+        </div>
+    {{/participants}}
+
+    {{^participants}}
+        <p>No participants found.</p>
+    {{/participants}}
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

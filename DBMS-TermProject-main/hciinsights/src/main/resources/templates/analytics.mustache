@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle navy top-left"></div>
+<div class="bg-circle maroon bottom-right"></div>
+
+<div class="container">
+
+    <h1>Analytics Dashboard</h1>
+
+    <form method="GET" action="/analytics" style="display:flex; gap:12px; align-items:flex-end; margin-bottom:30px;">
+        <div style="width:240px;">
+            <label for="studyId"><strong>Study</strong></label>
+            <select id="studyId" name="studyId" style="width:100%; padding:8px; border-radius:10px; border:1px solid #ccc; background:white; display:block;">
+                <option value="" {{^selectedStudyId}}selected{{/selectedStudyId}}>All studies</option>
+                {{#studies}}
+                <option value="{{studyId}}" {{#selected}}selected{{/selected}}>{{title}}</option>
+                {{/studies}}
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Apply</button>
+    </form>
+
+    {{#errorMessage}}
+    <p class="error-message">{{.}}</p>
+    {{/errorMessage}}
+
+    <div class="card" style="margin-bottom:40px;">
+        <h2>Average Completion Time per Task (Top 15)</h2>
+        <canvas id="avgTimeChart" style="max-height:350px; margin-top:20px; margin-bottom:40px;"></canvas>
+
+        {{#avgTaskTimes}}
+        <p><strong>{{description}}</strong> — {{avgTime}} sec</p>
+        {{/avgTaskTimes}}
+
+        {{^avgTaskTimes}}
+        <p>No result data found.</p>
+        {{/avgTaskTimes}}
+    </div>
+
+    <div class="card" style="margin-bottom:40px;">
+        <h2>Task Difficulty Ratio (Top 15)</h2>
+        <canvas id="difficultyChart" style="max-height:350px; margin-top:20px; margin-bottom:40px;"></canvas>
+
+        {{#difficultyRatios}}
+        <p><strong>{{description}}</strong> — {{difficultyRatio}}</p>
+        {{/difficultyRatios}}
+
+        {{^difficultyRatios}}
+        <p>No difficulty data found.</p>
+        {{/difficultyRatios}}
+    </div>
+
+    <div class="card" style="margin-bottom:40px;">
+        <h2>Average Participant Scores (Top 15)</h2>
+        <canvas id="scoreChart" style="max-height:350px; margin-top:20px; margin-bottom:40px;"></canvas>
+
+        {{#participantScores}}
+        <p><strong>{{name}}</strong> — {{avgScore}}</p>
+        {{/participantScores}}
+
+        {{^participantScores}}
+        <p>No score data found.</p>
+        {{/participantScores}}
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const avgTimeLabels = [
+{{#avgTaskTimes}}"{{description}}",{{/avgTaskTimes}}
+];
+
+const avgTimeData = [
+{{#avgTaskTimes}}{{avgTime}},{{/avgTaskTimes}}
+];
+
+if (avgTimeLabels.length > 0) {
+    new Chart(document.getElementById('avgTimeChart'), {
+        type: 'bar',
+        data: {
+            labels: avgTimeLabels,
+            datasets: [{
+                label: 'Average Completion Time (sec)',
+                data: avgTimeData
+            }]
+        }
+    });
+}
+
+const difficultyLabels = [
+{{#difficultyRatios}}"{{description}}",{{/difficultyRatios}}
+];
+
+const difficultyData = [
+{{#difficultyRatios}}{{difficultyRatio}},{{/difficultyRatios}}
+];
+
+if (difficultyLabels.length > 0) {
+    new Chart(document.getElementById('difficultyChart'), {
+        type: 'bar',
+        data: {
+            labels: difficultyLabels,
+            datasets: [{
+                label: 'Difficulty Ratio',
+                data: difficultyData
+            }]
+        }
+    });
+}
+
+const scoreLabels = [
+{{#participantScores}}"{{name}}",{{/participantScores}}
+];
+
+const scoreData = [
+{{#participantScores}}{{avgScore}},{{/participantScores}}
+];
+
+if (scoreLabels.length > 0) {
+    new Chart(document.getElementById('scoreChart'), {
+        type: 'bar',
+        data: {
+            labels: scoreLabels,
+            datasets: [{
+                label: 'Avg Score',
+                data: scoreData
+            }]
+        }
+    });
+}
+
+</script>
+
+{{> fragments/footer}}
+
+</body>
+</html>

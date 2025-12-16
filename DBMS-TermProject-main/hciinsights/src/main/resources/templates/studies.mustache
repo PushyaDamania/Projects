@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle navy top-left"></div>
+<div class="bg-circle maroon bottom-right"></div>
+
+<div class="container">
+
+    <h1>Your Studies</h1>
+
+    <div style="margin: 20px 0;">
+        <a class="btn" href="/studies/create">+ Create New Study</a>
+    </div>
+
+    {{#studies}}
+        <div class="card">
+            <h3>{{title}}</h3>
+            <p><strong>Platform:</strong> {{platform}}</p>
+            <p><strong>Status:</strong> {{status}}</p>
+            <p><strong>Created:</strong> {{createdAt}}</p>
+
+            <div class="card-actions">
+                <div class="card-action-left">
+                    <a class="btn small" href="/studies/{{studyId}}">View</a>
+                </div>
+                <div class="card-action-right">
+                    <a class="btn small btn-danger" href="/studies/delete/{{studyId}}">Delete</a>
+                </div>
+            </div>
+        </div>
+    {{/studies}}
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

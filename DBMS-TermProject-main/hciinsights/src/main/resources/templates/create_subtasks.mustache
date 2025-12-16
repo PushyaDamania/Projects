@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle maroon bottom-right"></div>
+
+<div class="back-btn-floating">
+    <a class="btn btn-back" href="/studies/{{studyId}}/tasks/{{taskId}}/subtasks">← Back</a>
+</div>
+
+<div class="container" style="max-width:600px;">
+
+    <h2>Create Subtask</h2>
+
+    <form method="post">
+
+        <label>Description</label>
+        <textarea name="description" required></textarea>
+
+        <label>Expected Completion Time (minutes)</label>
+        <input name="expectedCompTime" type="number" min="0">
+
+        <button class="btn" type="submit">Create</button>
+    </form>
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

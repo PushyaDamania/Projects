@@ -1,0 +1,36 @@
+QUERY 1:
+- index name: idx_session_study
+- index statement: 
+   CREATE INDEX idx_session_study
+   ON Session(study_id, scheduled)
+- affected query:
+   SELECT session_id,
+       participant_id,
+       study_id,
+       scheduled,
+       notes,
+       score
+   FROM Session
+   WHERE study_id = ?
+   ORDER BY scheduled ASC;
+- time consumption before: 62.8 ms
+- time consumption after: 11.2 ms
+
+QUERY 2: 
+- index name: idx_study_user
+- index statement: 
+   CREATE INDEX idx_study_user
+   ON Study(user_id,created_at)
+- affected query:
+   SELECT study_id,
+       user_id,
+       title,
+       description,
+       platform,
+       status,
+       created_at
+   FROM Study
+   WHERE user_id = 1
+   ORDER BY created_at DESC;
+- time consumption before: 19.4 ms
+- time consumption after: 4.3 ms

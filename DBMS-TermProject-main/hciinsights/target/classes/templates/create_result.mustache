@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle navy mid"></div>
+
+<div class="back-btn-floating">
+    <a class="btn btn-back"
+       href="/studies/{{studyId}}/sessions/{{sessionId}}/results">← Back</a>
+</div>
+
+<div class="container">
+
+    <h2>Add Result</h2>
+
+    <form method="POST"
+          action="/studies/{{studyId}}/sessions/{{sessionId}}/results/create">
+
+        <label>Task</label>
+        <select name="taskId">
+            {{#tasks}}
+                <option value="{{taskId}}">Task {{taskOrder}}</option>
+            {{/tasks}}
+        </select>
+
+        <label>Completed?</label>
+        <select name="isComplete">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+
+        <label>Completion Time (minutes)</label>
+        <input type="number" name="completionTime">
+
+        <label>Errors</label>
+        <input type="number" name="errors">
+
+        <label>Notes</label>
+        <textarea name="notes"></textarea>
+
+        <button class="btn" type="submit">Save Result</button>
+
+    </form>
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

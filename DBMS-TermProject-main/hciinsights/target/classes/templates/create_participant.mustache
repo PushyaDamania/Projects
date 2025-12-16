@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle navy mid"></div>
+
+<div class="back-btn-floating">
+    <a class="btn btn-back" href="/participants">← Back</a>
+</div>
+
+<div class="container" style="max-width:700px;">
+
+    <h2>Add Participant</h2>
+
+    {{#errorMessage}}
+        <p class="error-message">{{.}}</p>
+    {{/errorMessage}}
+
+    <form method="post" action="/participants/create">
+
+        <label>First Name</label>
+        <input type="text" name="fname" required>
+
+        <label>Last Name</label>
+        <input type="text" name="lname" required>
+
+        <label>Age</label>
+        <input type="number" name="age">
+
+        <label>Occupation</label>
+        <input type="text" name="occupation">
+
+        <label>Experience Level</label>
+        <input type="text" name="occupationExp">
+
+        <label>Email</label>
+        <input type="email" name="email">
+
+        <button class="btn" type="submit">Create Participant</button>
+    </form>
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

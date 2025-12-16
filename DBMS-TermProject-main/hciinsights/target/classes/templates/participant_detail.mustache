@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle navy top-left"></div>
+
+<div class="back-btn-floating">
+    <a class="btn btn-back"
+       href="/participants">← Back</a>
+</div>
+
+<div class="container">
+
+    <div class="card" style="max-width:700px; margin: 0 auto;">
+
+        <h2>{{participant.fullName}}</h2>
+
+        <p><strong>Age:</strong> {{participant.age}}</p>
+        <p><strong>Occupation:</strong> {{participant.occupation}}</p>
+        <p><strong>Experience:</strong> {{participant.occupationExp}}</p>
+        <p><strong>Email:</strong> {{participant.email}}</p>
+
+        <div class="card-actions">
+            <div class="card-action-left"></div>
+            <div class="card-action-right">
+                <a class="btn small btn-danger"
+                   href="/participants/delete/{{participant.participantId}}">Delete</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

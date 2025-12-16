@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> fragments/html_header}}
+<body class="cream-bg">
+
+{{> fragments/navbar}}
+
+<div class="bg-circle navy mid"></div>
+
+<div class="back-btn-floating">
+    <a class="btn btn-back" href="/studies/{{studyId}}">← Back</a>
+</div>
+
+<div class="container">
+
+    <h1>Tasks</h1>
+
+    <a class="btn" href="/studies/{{studyId}}/tasks/create">+ Add Task</a>
+
+    {{#tasks}}
+        <div class="card">
+            <h3>Task {{taskOrder}}</h3>
+
+            <p>{{description}}</p>
+
+            <div class="card-actions">
+                <div class="card-action-left">
+                    <a class="btn small" href="/studies/{{studyId}}/tasks/view/{{taskId}}">View</a>
+                </div>
+                <div class="card-action-right">
+                    <a class="btn small btn-danger" href="/studies/{{studyId}}/tasks/delete/{{taskId}}">Delete</a>
+                </div>
+            </div>
+        </div>
+    {{/tasks}}
+
+</div>
+
+{{> fragments/footer}}
+</body>
+</html>

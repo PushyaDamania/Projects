@@ -1,0 +1,15 @@
+Data Source for HCI Insights Project
+
+The dataset used in this project was synthetically generated using a custom Python script. The script utilizes the Faker library to create realistic user names, 
+participant information, tasks, subtasks, and session results. Randomization was applied to attributes such as age, occupation, task completion times, errors, 
+and scores to simulate realistic HCI study data.
+
+All data generation logic is contained in the Python script generate_data.inpyb, which outputs SQL INSERT statements for populating the database. 
+Foreign key relationships between tables (Users, Study, Participant, Task, Subtask, Session, and Result) were carefully maintained to ensure referential integrity.
+
+No external dataset was used. All data in the database is artificially generated and does not contain any personally identifiable information.
+
+The output is in data.sql
+populate.sql is a smaller table used for testing purposes and does not have least one table with more than 1000 rows
+
+Warning: It takes a while to run

@@ -1,0 +1,26 @@
+Security Overview – HCI Insights
+
+1. Password Security
+- Passwords are hashed using BCryptPasswordEncoder.
+- Salt is automatically applied per-user.
+- No plaintext passwords are stored.
+
+2. Authentication Model
+- Custom session-based authentication.
+- UserService stores authenticated user in session scope.
+- Logout clears session via userService.unAuthenticate().
+
+3. SQL Injection Protection
+- All database queries use PreparedStatement.
+- Prevents SQL injection attacks.
+- No string concatenation used for SQL queries.
+
+4. Input Validation
+- Registration enforces:
+  • Password >= 8 characters
+  • Password and confirm match
+- Null checks for fields inside services.
+
+5. Session Security
+Strengths:
+- SessionScope prevents user data leaking between sessions.
