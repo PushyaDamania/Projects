@@ -1,21 +1,20 @@
 # HCI Insights — DBMS Term Project
 
 **Team Members
-Group 22:
-
-Olin Cordell (okc05539)
--> Created Models, Controllers, Services and implemented UI/UX across the web service.
-
-Sean McGrath (smm94426)
--> Added study filtering to Analytics page with dropdown selector, modified AnalyticsService queries to support study ID parameters, updated AnalyticsController to handle study selection, and designed the study dropdown UI on the analytics dashboard.
-
-Pushya Damania (phd87389)
+Pushya Damania
 -> Created and populated the database with realistic, large-scale data using automated SQL scripts. Authored documentation files: data.sql, ddl.sql, populate.sql, datasource.txt, security.txt, generate_data.inpyb.
 
-Meghana Madduri (vm84607)
+
+Olin Cordell
+-> Created Models, Controllers, Services and implemented UI/UX across the web service.
+
+Sean McGrath
+-> Added study filtering to Analytics page with dropdown selector, modified AnalyticsService queries to support study ID parameters, updated AnalyticsController to handle study selection, and designed the study dropdown UI on the analytics dashboard.
+
+Meghana Madduri
 -> created queries.sql, wrote down all the SQL queries from the services (filled in ?s w/ example values), their java classes and methods used in, purpose, and example URLs. Created perf.txt and made two indexes. 
 
-Shafat Hasan (smh18904)
+Shafat Hasan
 -> Wrote documentation such as the Read me file. Did smoke tests and worked on core flows. 
 
 ## Project Overview
